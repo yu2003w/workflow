@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ideadream.workflow.mapper.EventMapper;
+
 @Service
 public class PreExamService {
 
@@ -23,9 +25,13 @@ public class PreExamService {
 	@Autowired
 	private TaskService taskS;
 	
+	@Autowired
+	private EventMapper evtM;
+	
 	@Transactional
 	public void startProcess() {
 		logger.debug("startProcess(), start PreExam process");
+		logger.debug("startProcess(), event logs, task ids->" + evtM.getTaskId());
 		runS.startProcessInstanceByKey("PreExam");
 	}
 	

@@ -32,7 +32,7 @@ public class PreExamService {
 	public void startProcess() {
 		logger.debug("startProcess(), start PreExam process");
 		logger.debug("startProcess(), event logs, task ids->" + evtM.getTaskId());
-		runS.startProcessInstanceByKey("PreExam");
+		runS.startProcessInstanceByKey("preExam");
 	}
 	
 	@Transactional

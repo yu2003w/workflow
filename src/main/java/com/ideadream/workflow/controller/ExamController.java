@@ -23,9 +23,12 @@ public class ExamController {
 	@Autowired
 	private PreExamService preExamS;
 	
-	@RequestMapping(value="/preexam", method=RequestMethod.POST)
+	/**
+	 * initiate examination, start process at this point
+	 */
+	@RequestMapping(value="/initexam", method=RequestMethod.POST)
 	public void startPreExam() {
-		logger.debug("startPreExam(), prepare examination");
+		logger.debug("startPreExam(), initiate examination");
 		preExamS.startProcess();
 	}
 	

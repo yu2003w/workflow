@@ -52,6 +52,15 @@ if [ $OS_NAME = "Darwin" ]; then
   chmod -R 777 ${WORK_DIR}/logs
 fi
 
+# set environment variables
+
+# set environment variables
+./paraenv.sh
+if [ $? != 0 ]; then
+  echo "initialize environment variables failed"
+  return
+fi
+
 docker run --rm --name wfware -p 8080:8080 -v ${WORK_DIR}/workflow/webapps/:/usr/local/tomcat/webapps \
     -v ${WORK_DIR}/logs/workflow/:/usr/local/tomcat/logs/ -d tomcat:9.0
 
